@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React desde HTML</title>
+</head>
+<body>
+    <div id="elem1">
+    </div>
+    <div id="elem2">
+    </div>
+    <script type="text/babel">
+        var vista1 = 
+        <div>
+            <h1>Esta pagina de html con JSK</h1>
+            <p>Este lenguaje es interpretado por babel</p>
+            <p>Esto es JSK con HTML</p>
+        </div>;
+        var elemento1 = document.getElementById('elem1');
+        ReactDOM.render(vista1,elemento1);
+        ReactDOM.render(<p>Hola Mundo</p>,document.getElementById('elem2'));
+    </script>
+    <script src="https://unpkg.com/react@15.4.2/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@15.4.2/dist/react-dom.js"></script>
+    <script src="https://unpkg.com/babel-core@5.8.38/browser.min.js"></script>
+    <script type="text/babel"></script>
+</body>
+</html>
