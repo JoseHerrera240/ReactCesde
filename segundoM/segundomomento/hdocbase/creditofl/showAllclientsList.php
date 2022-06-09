@@ -10,8 +10,7 @@ $conn = new mysqli($HostName, $HostUser, $HostPass, $DatabaseName);
 if ($conn->connect_error) {
  die("Conexión fallída: " . $conn->connect_error);
 } 
-// Creating SQL command to fetch all records from Table.
-$sql = "SELECT * FROM StudentDetailsTable";
+$sql = "SELECT * FROM clientdetailstable";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     while($row[] = $result->fetch_assoc()) {
@@ -25,4 +24,5 @@ else
 }
 echo $json;
 $conn->close();
+
 ?>

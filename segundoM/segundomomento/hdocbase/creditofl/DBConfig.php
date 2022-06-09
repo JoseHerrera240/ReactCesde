@@ -1,6 +1,6 @@
-<?php
+<?
 $HostName = "localhost";
-$DatabaseName = "dbacademic";
+$DatabaseName = "creditolf";
 $HostUser = "root";
 $HostPass = "";
 ?>

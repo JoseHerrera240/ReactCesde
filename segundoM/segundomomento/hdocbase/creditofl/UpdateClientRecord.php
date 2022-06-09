@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 header('Access-Control-Allow-Origin: *');
 header("Access-Control-Allow-Credentials: true");
 header('Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS');
@@ -16,29 +16,32 @@ include 'DBConfig.php';
  // decoding the received JSON and store into $obj variable.
  $obj = json_decode($json,true);
  
- // Populate Student ID from JSON $obj array and store into $S_ID.
- $S_ID = $obj['student_id'];
+ $S_correo = $obj['correo'];
+ $S_valorPrestamo = $obj['valor_prestamo'];
+ $S_tipoPrestamo = $obj['tipo_prestamo'];
+ $S_numeroCuotas = $obj['numero_cuotas'];
  
- // Creating SQL query and Updating the current record into MySQL database table.
- $Sql_Query = "DELETE FROM StudentDetailsTable WHERE student_id = '$S_ID'" ;
+ $Sql_Query = "UPDATE clientdetailtable SET  valor_prestamo = '$S_Class', tipo_prestamo = '$S_Phone_Number', numero_cuotas = '$S_Email' WHERE student_id = $S_ID";
  
  
  if(mysqli_query($con,$Sql_Query)){
  
- // If the record inserted successfully then show the message.
-$MSG = 'Estudiante eliminado correctamente...' ;
+    // If the record inserted successfully then show the message.
+   $MSG = 'El estudiante ha sido actualizado correctamente ...' ;
+    
+   // Converting the message into JSON format.
+   $json = json_encode($MSG);
+    
+   // Echo the message.
+    echo $json ;
+    
+    }
+    else{
+    
+    echo 'Inténtelo de nuevo';
+    
+    }
+    mysqli_close($con);
+   
  
-// Converting the message into JSON format.
-$json = json_encode($MSG);
- 
-// Echo the message.
- echo $json ;
- 
- }
- else{
- 
- echo 'Inténtelo de nuevo';
- 
- }
- mysqli_close($con);
-?>
+ ?>

@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 header('Access-Control-Allow-Origin: *');
 header("Access-Control-Allow-Credentials: true");
 header('Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS');
@@ -16,20 +16,17 @@ $json = file_get_contents('php://input');
 // decoding the received JSON and store into $obj variable.
 $obj = json_decode($json, true);
 
-// Populate Student name from JSON $obj array and store into $S_Name.
-$S_Name = $obj['student_name'];
 
-// Populate Student Class from JSON $obj array and store into $S_Class.
-$S_Class = $obj['student_class'];
+$S_Correo = $obj['correo'];
 
-// Populate Student Phone Number from JSON $obj array and store into $S_Phone_Number.
-$S_Phone_Num = $obj['student_phone_number'];
+$S_valorPrestamo=$obj['valor_prestamo'];
 
-// Populate Email from JSON $obj array and store into $S_Email.
-$S_Email = $obj['student_email'];
+$S_tipoPrestamo=$obj['tipo_prestamo'];
+
+$S_numeroCuotas=$obj['numero_cuotas'];
 
 // Creating SQL query and insert the record into MySQL database table.
-$Sql_Query = "insert into StudentDetailsTable (student_name,student_class,student_phone_number,student_email) values ('$S_Name','$S_Class','$S_Phone_Number','$S_Email')";
+$Sql_Query = "insert into StudentDetailsTable (correo,valor_prestamo,tipo_prestamo,numero_cuotas) values ('$S_Correo','$S_valorPrestamo','$S_tipoPrestamo','$S_numeroCuotas')";
 
 if (mysqli_query($con, $Sql_Query)) {
 
@@ -46,3 +43,4 @@ if (mysqli_query($con, $Sql_Query)) {
     echo 'Inténtelo de nuevo...';
 }
 mysqli_close($con);
+?>

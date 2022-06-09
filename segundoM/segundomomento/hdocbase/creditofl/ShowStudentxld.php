@@ -17,12 +17,8 @@ $json = file_get_contents('php://input');
 $obj = json_decode($json,true);
 
 // Populate Student ID from JSON $obj array and store into $S_ID.
-$S_ID = $obj['student_id'];
-// Creating SQL command to fetch all records from Table.
-//$student_id = $_GET['student_id'];
-//$sql = "SELECT * FROM StudentDetailsTable WHERE student_id = " . $id . "";
-//$sql = "SELECT * FROM StudentDetailsTable WHERE student_id = '$student_id'";
-$sql = "SELECT * FROM StudentDetailsTable WHERE student_id = '$S_ID'";
+$S_correo = $obj['correo'];
+$sql = "SELECT * FROM clientdetailtable WHERE correo = '$S_correo'";
 $result = $conn->query($sql);
 $json = '';
 if ($result->num_rows > 0) {
@@ -35,3 +31,4 @@ if ($result->num_rows > 0) {
 }
 echo $json;
 $conn->close();
+?>
