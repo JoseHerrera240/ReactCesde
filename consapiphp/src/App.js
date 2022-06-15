@@ -28,7 +28,7 @@ class App extends React.Component {
 
   addStudent(e) {
     e.preventDefault();
-        fetch(`http://localhost:8081/apirnacademic/InsertStudentData.php`, {
+        fetch(`http://localhost/apirnacademic/InsertStudentData.php`, {
         method: 'POST',
         body: JSON.stringify(this.state),
         headers: {
@@ -49,7 +49,7 @@ class App extends React.Component {
   }
 
     refreshStudent() {
-    const apiUrl = 'http://localhost:8081/apirnacademic/showallstudentslist.php';
+    const apiUrl = 'http://localhost/apirnacademic/showallstudentslist.php';
     fetch(apiUrl)
       .then((response) => response.json())
       .then((data) => {
